@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="blackjack-tests" default="run-tests">
+
+	<dirname property="blackjack-tests.basedir" file="${ant.file.blackjack-tests}" />
+
+	<property file="${blackjack-tests.basedir}/build.properties" />
+
+	<import file="${blackjack.home}/build.xml" />
+
+	<path id="classpath.compile-tests">
+		<path refid="classpath.compile" />
+		<fileset dir="${spring.home}">
+			<include name="org.springframework.test-3.0.1.RELEASE-A.jar" />
+		</fileset>
+		<fileset dir="${junit.home}">
+			<include name="junit-4.8.2.jar" />
+		</fileset>
+		<fileset dir="${jmock.home}">
+			<include name="jmock-2.5.1.jar" />
+			<include name="jmock-junit4-2.5.1.jar" />
+			<include name="cglib-2.1_3-src.jar" />
+			<include name="jmock-legacy-2.5.1.jar" />
+			<include name="objenesis-1.0.jar" />
+			<include name="hamcrest-library-1.1.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath.run-tests">
+		<path refid="classpath.run" />
+		<pathelement location="${blackjack-tests.basedir}" />
+		<pathelement location="${blackjack-tests.basedir}/bin" />
+		<fileset dir="${spring.home}">
+			<include name="org.springframework.test-3.0.1.RELEASE-A.jar" />
+		</fileset>
+		<fileset dir="${junit.home}">
+			<include name="junit-4.8.2.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath.config-tests">
+		<pathelement location="${blackjack-tests.basedir}/config" />
+	</path>
+
+	<target name="compile-tests" depends="compile">
+		<mkdir dir="${blackjack-tests.basedir}/bin" />
+		<javac srcdir="${blackjack-tests.basedir}/src" encoding="UTF-8" destdir="${blackjack-tests.basedir}/bin" source="1.5" target="1.5" debug="true" debuglevel="lines,source">
+			<classpath refid="classpath.compile-tests" />
+		</javac>
+		<copy todir="${blackjack-tests.basedir}/bin">
+			<fileset dir="${blackjack-tests.basedir}/src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="run-tests" depends="compile-tests">
+		<mkdir dir="${blackjack-tests.basedir}/gen" />
+		<junit fork="true" printsummary="false" maxmemory="128m">
+			<classpath refid="classpath.compile-tests" />
+			<classpath refid="classpath.run-tests" />
+			<classpath refid="classpath.config-tests" />
+			<formatter type="plain" usefile="false" />
+			<test name="com.luca.blackjack.test.AllTests" todir="${blackjack-tests.basedir}/gen" />
+		</junit>
+	</target>
+
+	<target name="zip" depends="init">
+		<mkdir dir="${blackjack-tests.basedir}/gen" />
+		<zip destfile="${blackjack-tests.basedir}/gen/blackjack-tests-${build.timestamp}.zip">
+			<fileset dir="${blackjack-tests.basedir}">
+				<exclude name="bin/**" />
+				<exclude name="gen/**" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="clean">
+		<delete dir="${integrale-tests.basedir}/bin" />
+		<delete dir="${integrale-tests.basedir}/gen" />
+	</target>
+
+</project>
