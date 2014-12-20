@@ -51,7 +51,6 @@ public class DealerHand {
 		hand = null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Parameters
 	public static Collection<Object[]> data() {
 

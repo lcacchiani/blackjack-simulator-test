@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
 		BasicRecord.class, //
 		Card.class, //
 		DealerHand.class, //
+		DefaultDealerGameStrategy.class, //
 		DefaultPlayerGameStrategy.class, //
 		DefaultPlayerGameStrategyV2.class, //
 		PlayerHand.class, //

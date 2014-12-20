@@ -71,7 +71,7 @@ public class VegasTable {
 	public final void tearDown() {
 		table = null;
 	}
-	@SuppressWarnings("unchecked")
+
 	@Parameters
 	public static Collection<Object[]> data() {
 

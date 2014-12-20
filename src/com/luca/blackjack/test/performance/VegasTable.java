@@ -86,7 +86,6 @@ public class VegasTable {
 		table = null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Parameters
 	public static Collection<Object[]> data() {
 
