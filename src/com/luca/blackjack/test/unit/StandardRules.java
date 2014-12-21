@@ -90,21 +90,21 @@ public class StandardRules {
 				false, false, false, false, false, false, false, "3:2", false,
 				"2:1"));
 		List<Object> result0 = new ArrayList<Object>();
-		result0.addAll(Arrays.asList(1.5, 2.0, true, false, false));
+		result0.addAll(Arrays.asList(1.5, 2.0, true, false, true));
 
 		ArrayList<Object> input1 = new ArrayList<Object>();
-		input1.addAll(Arrays.asList(false, "no-surrender-allowed", 2,
+		input1.addAll(Arrays.asList(false, "no-surrender", 2,
 				false, false, false, false, false, true, false, false, "15:9",
 				false, "8:7"));
 		List<Object> result1 = new ArrayList<Object>();
-		result1.addAll(Arrays.asList(1.666, 1.142, false, false, true));
+		result1.addAll(Arrays.asList(1.666, 1.142, false, false, false));
 
 		ArrayList<Object> input2 = new ArrayList<Object>();
 		input2.addAll(Arrays.asList(false, "late-surrender", 2, false,
 				false, false, false, false, false, false, false, "3:2", false,
 				"2:1"));
 		List<Object> result2 = new ArrayList<Object>();
-		result2.addAll(Arrays.asList(1.5, 2.0, false, true, false));
+		result2.addAll(Arrays.asList(1.5, 2.0, false, true, true));
 
 		return Arrays.asList(new Object[][] { { input0, result0 },
 				{ input1, result1 }, { input2, result2 } });
@@ -180,7 +180,7 @@ public class StandardRules {
 		boolean actualLateSurrender = rules.isLateSurrender();
 		boolean expectedLateSurrender = (Boolean) results.get(3);
 		assertEquals(expectedLateSurrender, actualLateSurrender);
-		boolean actualNoSurrenderAllowed = rules.isNoSurrenderAllowed();
+		boolean actualNoSurrenderAllowed = rules.isSurrenderAllowed();
 		boolean expectedNoSurrenderAllowed = (Boolean) results.get(4);
 		assertEquals(expectedNoSurrenderAllowed, actualNoSurrenderAllowed);
 	}

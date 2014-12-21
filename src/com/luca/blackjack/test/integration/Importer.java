@@ -94,7 +94,7 @@ public class Importer {
 				new DefaultDealerGameStrategy()));
 		List<Object> rules00 = new ArrayList<Object>();
 		rules00.addAll(Arrays.asList(false, 1, false, -1, false, false, false,
-				false, false, false, false, false, "3:2", false, "2:1", false, true));
+				false, false, false, false, false, "3:2", false, "2:1", false, false));
 		List<Object> deck00 = new ArrayList<Object>();
 		deck00.addAll(Arrays.asList(1));
 		Map<String, List<Object>> players00 = new HashMap<String, List<Object>>();
@@ -258,7 +258,7 @@ public class Importer {
 			boolean expectedLateSurrender = (Boolean) resultRules.get(15);
 			assertEquals(expectedLateSurrender, actualLateSurrender);
 			
-			boolean actualNoSurrenderAllowed = actualRules.isNoSurrenderAllowed();
+			boolean actualNoSurrenderAllowed = actualRules.isSurrenderAllowed();
 			boolean expectedNoSurrenderAllowed = (Boolean) resultRules.get(16);
 			assertEquals(expectedNoSurrenderAllowed, actualNoSurrenderAllowed);
 

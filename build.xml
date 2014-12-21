@@ -44,7 +44,7 @@
 
 	<target name="compile-tests" depends="compile">
 		<mkdir dir="${blackjack-tests.basedir}/bin" />
-		<javac srcdir="${blackjack-tests.basedir}/src" encoding="UTF-8" destdir="${blackjack-tests.basedir}/bin" source="1.5" target="1.5" debug="true" debuglevel="lines,source">
+		<javac srcdir="${blackjack-tests.basedir}/src" encoding="UTF-8" destdir="${blackjack-tests.basedir}/bin" source="1.7" target="1.7" debug="true" debuglevel="lines,source" fork="yes">
 			<classpath refid="classpath.compile-tests" />
 		</javac>
 		<copy todir="${blackjack-tests.basedir}/bin">
