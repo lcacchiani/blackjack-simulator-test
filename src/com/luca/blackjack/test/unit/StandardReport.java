@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.jmock.Expectations;
@@ -52,7 +52,7 @@ public class StandardReport {
 	
 	@Test
 	public final void setGetDate() {
-		Date date = new Date();
+		Calendar date = Calendar.getInstance();
 		report.setDate(date);
 		assertEquals(date, report.getDate());
 	}

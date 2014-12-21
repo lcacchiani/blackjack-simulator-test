@@ -92,9 +92,9 @@ public class VegasTable {
 		File file0 = new File("data/test-data-v1.0.xml");
 		List<List<Double>> expectation0 = new ArrayList<List<Double>>();
 		List<Double> expectation00 = new ArrayList<Double>();
-		expectation00.addAll(Arrays.asList(0.5, 0.2));
+		expectation00.addAll(Arrays.asList(0.05, 0.2));
 		List<Double> expectation01 = new ArrayList<Double>();
-		expectation01.addAll(Arrays.asList(2.5, 1d));
+		expectation01.addAll(Arrays.asList(0.25, 1d));
 		expectation0.addAll(Arrays.asList(expectation00, expectation01));
 
 		return Arrays.asList(new Object[][] { { file0, expectation0 } });

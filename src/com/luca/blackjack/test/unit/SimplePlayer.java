@@ -62,7 +62,7 @@ public class SimplePlayer {
 		player = null;
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = AssertionError.class)
 	public final void hitNoCard() {
 		player.hit(null);
 	}
@@ -97,10 +97,12 @@ public class SimplePlayer {
 		final double payout = 3;
 		context.checking(new Expectations() {
 			{
-				oneOf(hand).getBet();
+				allowing(hand).getBet();
 				will(returnValue(handBet));
+				allowing(hand).isSplit();
+				will(returnValue(false));
 				oneOf(hand).getStatus();
-				will(returnValue(Status.CLOSED));
+				will(returnValue(Status.ACTIVE));
 				oneOf(rules).getBlackjackPayoutValue();
 				will(returnValue(payout));
 				oneOf(hand).setStatus(Status.EVALUATED);
@@ -111,7 +113,7 @@ public class SimplePlayer {
 
 		player.setResult(Result.WON_BLACKJACK, rules);
 
-		double balanceExpected = initialBalance + handBet * payout;
+		double balanceExpected = initialBalance + handBet * payout + handBet;
 		assertEquals(balanceExpected, player.getBalance(), 0.001);
 		assertEquals(Result.WON_BLACKJACK, player.getTopResult());
 	}
@@ -122,7 +124,7 @@ public class SimplePlayer {
 		final double payout = 3;
 		context.checking(new Expectations() {
 			{
-				oneOf(hand).getBet();
+				allowing(hand).getBet();
 				will(returnValue(handBet));
 				oneOf(hand).getStatus();
 				will(returnValue(Status.CLOSED));
@@ -136,7 +138,7 @@ public class SimplePlayer {
 
 		player.setResult(Result.WON_DEALER_BUSTED_OUT, rules);
 
-		double balanceExpected = initialBalance + handBet * payout;
+		double balanceExpected = initialBalance + handBet * payout + handBet;
 		assertEquals(balanceExpected, player.getBalance(), 0.001);
 		assertEquals(Result.WON_DEALER_BUSTED_OUT, player.getTopResult());
 	}
@@ -147,7 +149,7 @@ public class SimplePlayer {
 		final double payout = 3;
 		context.checking(new Expectations() {
 			{
-				oneOf(hand).getBet();
+				allowing(hand).getBet();
 				will(returnValue(handBet));
 				oneOf(hand).getStatus();
 				will(returnValue(Status.CLOSED));
@@ -161,7 +163,7 @@ public class SimplePlayer {
 
 		player.setResult(Result.WON_HIGHER_SCORE, rules);
 
-		double balanceExpected = initialBalance + handBet * payout;
+		double balanceExpected = initialBalance + handBet * payout + handBet;
 		assertEquals(balanceExpected, player.getBalance(), 0.001);
 		assertEquals(Result.WON_HIGHER_SCORE, player.getTopResult());
 	}

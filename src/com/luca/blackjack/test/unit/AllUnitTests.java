@@ -14,6 +14,8 @@ import org.junit.runners.Suite;
 		PlayerHand.class, //
 		SimpleDealer.class, //
 		SimplePlayer.class, //
+		SimplePlayerPayoutFinal.class, //
+		SimplePlayerPayoutInitial.class, //
 		SimpleStrategy.class, //
 		StandardBlackjackGame.class, //
 		StandardDeck.class, //

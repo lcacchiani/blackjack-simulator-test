@@ -107,9 +107,9 @@ public class VegasTable {
 		List<Object> player05c = new ArrayList<Object>();
 		player05c.addAll(Arrays.asList(110d, Result.LOST_BUSTED_OUT));
 		List<Object> player05d = new ArrayList<Object>();
-		player05d.addAll(Arrays.asList(85d, Result.LOST_BUSTED_OUT));
+		player05d.addAll(Arrays.asList(95d, Result.LOST_BUSTED_OUT));
 		List<Object> player05e = new ArrayList<Object>();
-		player05e.addAll(Arrays.asList(105d, Result.WON_DEALER_BUSTED_OUT));
+		player05e.addAll(Arrays.asList(115d, Result.WON_DEALER_BUSTED_OUT));
 		List<Object> player05f = new ArrayList<Object>();
 		player05f.addAll(Arrays.asList(90d, Result.WON_DEALER_BUSTED_OUT));
 		List<Object> player05g = new ArrayList<Object>();

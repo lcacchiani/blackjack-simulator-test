@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<blackjack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schema/1.0/blackjack.xsd"
+<blackjack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/1.0/blackjack.xsd"
 	version="1.0" xsi:type="standard-blackjack-game">
 	<tables>
 		<table xsi:type="vegas-table">
@@ -78,7 +78,7 @@
 				<obo>false</obo>
 				<blackjack-payout>3:2</blackjack-payout>
 				<dealer-win-ties>false</dealer-win-ties>
-				<win-payout>2:1</win-payout>
+				<win-payout>1:1</win-payout>
 			</rules>
 		</table>
 	</tables>

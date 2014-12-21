@@ -2,7 +2,7 @@ package com.luca.blackjack.test.unit;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class BasicRecord {
 	
 	@Test
 	public final void setGetDate() {
-		Date date = new Date();
+		Calendar date = Calendar.getInstance();
 		record.setDate(date);
 		assertEquals(date, record.getDate());
 	}
