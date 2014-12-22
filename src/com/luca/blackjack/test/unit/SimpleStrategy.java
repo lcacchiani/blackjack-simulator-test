@@ -1,6 +1,7 @@
 package com.luca.blackjack.test.unit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -210,16 +211,53 @@ public class SimpleStrategy {
 	}
 
 	@Test
-	public final void getMoveResplitValid() {
+	public final void getMoveResplitValueValid() {
 		context.checking(new Expectations() {
 			{
 				allowing(rules).getResplit();
 				will(returnValue(1));
+				allowing(rules).isSplitAllowed();
+				will(returnValue(true));
+				allowing(rules).isSplitSameValue();
+				will(returnValue(true));
+				allowing(rules).isSplitSameRank();
+				will(returnValue(false));
 			}
 		});
 		Move actual = strategy.getMove(cards, dealerCard, rules, moveNo, resplitNo);
 		Move expected = (Move) results.get(0);
 		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public final void getMoveResplitRankValid() {
+		context.checking(new Expectations() {
+			{
+				allowing(rules).getResplit();
+				will(returnValue(1));
+				allowing(rules).isSplitAllowed();
+				will(returnValue(true));
+				allowing(rules).isSplitSameValue();
+				will(returnValue(false));
+				allowing(rules).isSplitSameRank();
+				will(returnValue(true));
+			}
+		});
+		Move actual = strategy.getMove(cards, dealerCard, rules, moveNo, resplitNo);
+		Move expected = (Move) results.get(0);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public final void getMoveNoSplitAllowed() {
+		context.checking(new Expectations() {
+			{
+				allowing(rules).isSplitAllowed();
+				will(returnValue(false));
+			}
+		});
+		Move actual = strategy.getMove(cards, dealerCard, rules, moveNo, resplitNo);
+		assertFalse(actual.equals(Move.SPLIT));
 	}
 
 	@Test

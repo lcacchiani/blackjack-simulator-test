@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<blackjack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/1.0/blackjack.xsd"
+<blackjack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://blackjack.luca.com/schema/1.0/blackjack.xsd"
 	version="1.0" xsi:type="standard-blackjack-game">
 	<tables>
 		<table xsi:type="vegas-table">
@@ -67,6 +67,7 @@
 			<rules xsi:type="standard-rules">
 				<soft-17>false</soft-17>
 				<surrender>no-surrender</surrender>
+				<split>same-value</split>
 				<resplit>-1</resplit>
 				<resplit-split-aces>false</resplit-split-aces>
 				<hit-split-aces>false</hit-split-aces>

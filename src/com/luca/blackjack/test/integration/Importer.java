@@ -93,8 +93,9 @@ public class Importer {
 		dealer00.addAll(Arrays.asList("Bastard",
 				new DefaultDealerGameStrategy()));
 		List<Object> rules00 = new ArrayList<Object>();
-		rules00.addAll(Arrays.asList(false, 1, false, -1, false, false, false,
-				false, false, false, false, false, "3:2", false, "1:1", false, false));
+		rules00.addAll(Arrays.asList(false, 1, false, Integer.MAX_VALUE, false,
+				false, false, false, false, false, false, false, "3:2", false,
+				"1:1", false, false, true, false, true));
 		List<Object> deck00 = new ArrayList<Object>();
 		deck00.addAll(Arrays.asList(1));
 		Map<String, List<Object>> players00 = new HashMap<String, List<Object>>();
@@ -253,14 +254,26 @@ public class Importer {
 			boolean actualEarlySurrender = actualRules.isEarlySurrender();
 			boolean expectedEarlySurrender = (Boolean) resultRules.get(2);
 			assertEquals(expectedEarlySurrender, actualEarlySurrender);
-			
+
 			boolean actualLateSurrender = actualRules.isLateSurrender();
 			boolean expectedLateSurrender = (Boolean) resultRules.get(15);
 			assertEquals(expectedLateSurrender, actualLateSurrender);
-			
-			boolean actualNoSurrenderAllowed = actualRules.isSurrenderAllowed();
-			boolean expectedNoSurrenderAllowed = (Boolean) resultRules.get(16);
-			assertEquals(expectedNoSurrenderAllowed, actualNoSurrenderAllowed);
+
+			boolean actualSurrenderAllowed = actualRules.isSurrenderAllowed();
+			boolean expectedSurrenderAllowed = (Boolean) resultRules.get(16);
+			assertEquals(expectedSurrenderAllowed, actualSurrenderAllowed);
+
+			boolean actualSplitSameValue = actualRules.isSplitSameValue();
+			boolean expectedSplitSameValue = (Boolean) resultRules.get(17);
+			assertEquals(expectedSplitSameValue, actualSplitSameValue);
+
+			boolean actualSplitSameRank = actualRules.isSplitSameRank();
+			boolean expectedSplitSameRank = (Boolean) resultRules.get(18);
+			assertEquals(expectedSplitSameRank, actualSplitSameRank);
+
+			boolean actualSplitAllowed = actualRules.isSplitAllowed();
+			boolean expectedSplitAllowed = (Boolean) resultRules.get(19);
+			assertEquals(expectedSplitAllowed, actualSplitAllowed);
 
 			int actualResplit = actualRules.getResplit();
 			int expectedResplit = (Integer) resultRules.get(3);

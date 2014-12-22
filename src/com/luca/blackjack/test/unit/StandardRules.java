@@ -26,6 +26,10 @@ public class StandardRules {
 	boolean lateSurrender;
 	boolean noSurrenderAllowed;
 	String surrender;
+	boolean splitSameValue;
+	boolean splitSameRank;
+	boolean splitAllowed;
+	String split;
 	int resplit;
 	boolean resplitSplitAces;
 	boolean hitSplitAces;
@@ -43,6 +47,7 @@ public class StandardRules {
 	public StandardRules(List<Object> inputs, List<Object> results) {
 		this.soft17 = (Boolean) inputs.get(0);
 		this.surrender = (String) inputs.get(1);
+		this.split = (String) inputs.get(14);
 		this.resplit = (Integer) inputs.get(2);
 		this.resplitSplitAces = (Boolean) inputs.get(3);
 		this.hitSplitAces = (Boolean) inputs.get(4);
@@ -63,6 +68,7 @@ public class StandardRules {
 		rules = new com.luca.blackjack.game.StandardRules();
 		rules.setSoft17(soft17);
 		rules.setSurrender(surrender);
+		rules.setSplit(split);
 		rules.setResplit(resplit);
 		rules.setResplitSplitAces(resplitSplitAces);
 		rules.setHitSplitAces(hitSplitAces);
@@ -85,29 +91,32 @@ public class StandardRules {
 	@Parameters
 	public static Collection<Object[]> data() {
 
-		ArrayList<Object> input0 = new ArrayList<Object>();
-		input0.addAll(Arrays.asList(false, "early-surrender", 2, false,
-				false, false, false, false, false, false, false, "3:2", false,
-				"2:1"));
-		List<Object> result0 = new ArrayList<Object>();
-		result0.addAll(Arrays.asList(1.5, 2.0, true, false, true));
+		ArrayList<Object> inputs0 = new ArrayList<Object>();
+		inputs0.addAll(Arrays.asList(false, "early-surrender", 2, false, false,
+				false, false, false, false, false, false, "3:2", false, "2:1",
+				"no-split"));
+		List<Object> results0 = new ArrayList<Object>();
+		results0.addAll(Arrays.asList(1.5, 2.0, true, false, true, false,
+				false, false));
 
-		ArrayList<Object> input1 = new ArrayList<Object>();
-		input1.addAll(Arrays.asList(false, "no-surrender", 2,
-				false, false, false, false, false, true, false, false, "15:9",
-				false, "8:7"));
-		List<Object> result1 = new ArrayList<Object>();
-		result1.addAll(Arrays.asList(1.666, 1.142, false, false, false));
+		ArrayList<Object> inputs1 = new ArrayList<Object>();
+		inputs1.addAll(Arrays.asList(false, "no-surrender", 2, false, false,
+				false, false, false, true, false, false, "15:9", false, "8:7",
+				"same-value"));
+		List<Object> results1 = new ArrayList<Object>();
+		results1.addAll(Arrays.asList(1.666, 1.142, false, false, false, true,
+				false, true));
 
-		ArrayList<Object> input2 = new ArrayList<Object>();
-		input2.addAll(Arrays.asList(false, "late-surrender", 2, false,
-				false, false, false, false, false, false, false, "3:2", false,
-				"2:1"));
-		List<Object> result2 = new ArrayList<Object>();
-		result2.addAll(Arrays.asList(1.5, 2.0, false, true, true));
+		ArrayList<Object> inputs2 = new ArrayList<Object>();
+		inputs2.addAll(Arrays.asList(false, "late-surrender", 2, false, false,
+				false, false, false, false, false, false, "3:2", false, "2:1",
+				"same-rank"));
+		List<Object> results2 = new ArrayList<Object>();
+		results2.addAll(Arrays.asList(1.5, 2.0, false, true, true, false, true,
+				true));
 
-		return Arrays.asList(new Object[][] { { input0, result0 },
-				{ input1, result1 }, { input2, result2 } });
+		return Arrays.asList(new Object[][] { { inputs0, results0 },
+				{ inputs1, results1 }, { inputs2, results2 } });
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -171,7 +180,7 @@ public class StandardRules {
 		double expected = (Double) results.get(1);
 		assertEquals(expected, actual, 0.001);
 	}
-	
+
 	@Test
 	public final void getSurrender() {
 		boolean actualEarlySurrender = rules.isEarlySurrender();
@@ -180,8 +189,21 @@ public class StandardRules {
 		boolean actualLateSurrender = rules.isLateSurrender();
 		boolean expectedLateSurrender = (Boolean) results.get(3);
 		assertEquals(expectedLateSurrender, actualLateSurrender);
-		boolean actualNoSurrenderAllowed = rules.isSurrenderAllowed();
-		boolean expectedNoSurrenderAllowed = (Boolean) results.get(4);
-		assertEquals(expectedNoSurrenderAllowed, actualNoSurrenderAllowed);
+		boolean actualSurrenderAllowed = rules.isSurrenderAllowed();
+		boolean expectedSurrenderAllowed = (Boolean) results.get(4);
+		assertEquals(expectedSurrenderAllowed, actualSurrenderAllowed);
+	}
+
+	@Test
+	public final void getSplit() {
+		boolean actualSplitSameValue = rules.isSplitSameValue();
+		boolean expectedSplitSameValue = (Boolean) results.get(5);
+		assertEquals(expectedSplitSameValue, actualSplitSameValue);
+		boolean actualSplitSameRank = rules.isSplitSameRank();
+		boolean expectedSplitSameRank = (Boolean) results.get(6);
+		assertEquals(expectedSplitSameRank, actualSplitSameRank);
+		boolean actualSplitAllowed = rules.isSplitAllowed();
+		boolean expectedSplitAllowed = (Boolean) results.get(7);
+		assertEquals(expectedSplitAllowed, actualSplitAllowed);
 	}
 }
