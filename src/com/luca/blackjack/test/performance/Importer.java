@@ -93,7 +93,7 @@ public class Importer {
 	@Parameters
 	public static Collection<Object[]> data() {
 
-		File file0 = new File("data/test-data-v1.0.xml");
+		File file0 = new File("data/test-data-v1.0-000.xml");
 		List<Double> expectation0 = new ArrayList<Double>();
 		expectation0.addAll(Arrays.asList(0.1, 0.1));
 
