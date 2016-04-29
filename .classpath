@@ -8,7 +8,7 @@
 	<classpathentry kind="lib" path="lib/jmock-2.5.1/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/jmock-2.5.1/objenesis-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.8.2.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/blackjack"/>
 	<classpathentry kind="lib" path="lib/jmock-2.5.1/hamcrest-library-1.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/blackjack"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

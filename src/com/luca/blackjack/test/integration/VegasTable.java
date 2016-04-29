@@ -75,12 +75,11 @@ public class VegasTable {
 	@Parameters
 	public static Collection<Object[]> data() {
 
-		ArrayList<Object> inputs0 = new ArrayList<Object>();
-		File file0 = new File("data/test-data-v1.0-000.xml");
-		inputs0.addAll(Arrays.asList(file0));
-
-		List<Object> results0 = new ArrayList<Object>();
-
+		ArrayList<Object> input0 = new ArrayList<Object>();
+		File file0 = new File("data/test-data-v1.0.xml");
+		input0.addAll(Arrays.asList(file0));
+		List<Object> result0 = new ArrayList<Object>();
+		
 		List<Object> run01 = new ArrayList<Object>();
 		List<Object> player01a = new ArrayList<Object>();
 		player01a.addAll(Arrays.asList(110d, Result.WON_HIGHER_SCORE));
@@ -99,7 +98,7 @@ public class VegasTable {
 		run01.addAll(Arrays.asList(Card.FIVE_OF_DIAMONDS, 19, 7, player01a,
 				player01b, player01c, player01d, player01e, player01f,
 				player01g));
-
+		
 		List<Object> run05 = new ArrayList<Object>();
 		List<Object> player05a = new ArrayList<Object>();
 		player05a.addAll(Arrays.asList(130d, Result.WON_DEALER_BUSTED_OUT));
@@ -118,57 +117,10 @@ public class VegasTable {
 		run05.addAll(Arrays.asList(Card.FOUR_OF_HEARTS, 24, 7, player05a,
 				player05b, player05c, player05d, player05e, player05f,
 				player05g));
+		
+		result0.addAll(Arrays.asList(true, true, true, true, run01, run05));
 
-		results0.addAll(Arrays.asList(true, true, true, true, run01, run05));
-
-		ArrayList<Object> inputs1 = new ArrayList<Object>();
-		File file1 = new File("data/test-data-v1.0-001.xml");
-		inputs1.addAll(Arrays.asList(file1));
-
-		List<Object> results1 = new ArrayList<Object>();
-
-		List<Object> run11 = new ArrayList<Object>();
-		List<Object> player11a = new ArrayList<Object>();
-		player11a.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		List<Object> player11b = new ArrayList<Object>();
-		player11b.addAll(Arrays.asList(90d, Result.LOST_BUSTED_OUT));
-		List<Object> player11c = new ArrayList<Object>();
-		player11c.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		List<Object> player11d = new ArrayList<Object>();
-		player11d.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		List<Object> player11e = new ArrayList<Object>();
-		player11e.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		List<Object> player11f = new ArrayList<Object>();
-		player11f.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		List<Object> player11g = new ArrayList<Object>();
-		player11g.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		run11.addAll(Arrays.asList(Card.JACK_OF_CLUBS, 20, 7, player11a,
-				player11b, player11c, player11d, player11e, player11f,
-				player11g));
-
-		List<Object> run15 = new ArrayList<Object>();
-		List<Object> player15a = new ArrayList<Object>();
-		player15a.addAll(Arrays.asList(90d, Result.WON_HIGHER_SCORE));
-		List<Object> player15b = new ArrayList<Object>();
-		player15b.addAll(Arrays.asList(90d, Result.LOST_BUSTED_OUT));
-		List<Object> player15c = new ArrayList<Object>();
-		player15c.addAll(Arrays.asList(50d, Result.LOST_BUSTED_OUT));
-		List<Object> player15d = new ArrayList<Object>();
-		player15d.addAll(Arrays.asList(50d, Result.LOST_BUSTED_OUT));
-		List<Object> player15e = new ArrayList<Object>();
-		player15e.addAll(Arrays.asList(70d, Result.LOST_LOWER_SCORE));
-		List<Object> player15f = new ArrayList<Object>();
-		player15f.addAll(Arrays.asList(90d, Result.WON_HIGHER_SCORE));
-		List<Object> player15g = new ArrayList<Object>();
-		player15g.addAll(Arrays.asList(90d, Result.LOST_LOWER_SCORE));
-		run15.addAll(Arrays.asList(Card.EIGHT_OF_DIAMONDS, 19, 7, player15a,
-				player15b, player15c, player15d, player15e, player15f,
-				player15g));
-
-		results1.addAll(Arrays.asList(true, true, true, true, run11, run15));
-
-		return Arrays.asList(new Object[][] { { inputs0, results0 },
-				{ inputs1, results1 } });
+		return Arrays.asList(new Object[][] { { input0, result0 } });
 	}
 
 	@Test

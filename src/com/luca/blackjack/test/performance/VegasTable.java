@@ -89,7 +89,7 @@ public class VegasTable {
 	@Parameters
 	public static Collection<Object[]> data() {
 
-		File file0 = new File("data/test-data-v1.0-000.xml");
+		File file0 = new File("data/test-data-v1.0.xml");
 		List<List<Double>> expectation0 = new ArrayList<List<Double>>();
 		List<Double> expectation00 = new ArrayList<Double>();
 		expectation00.addAll(Arrays.asList(0.05, 0.2));

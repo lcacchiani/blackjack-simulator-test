@@ -83,7 +83,7 @@ public class Importer {
 	public static Collection<Object[]> data() {
 
 		ArrayList<Object> input0 = new ArrayList<Object>();
-		File file0 = new File("data/test-data-v1.0-000.xml");
+		File file0 = new File("data/test-data-v1.0.xml");
 		input0.addAll(Arrays.asList(file0));
 		List<Object> result0 = new ArrayList<Object>();
 		Map<String, List<Object>> tables0 = new HashMap<String, List<Object>>();
