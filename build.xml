@@ -77,8 +77,8 @@
   </target>
 
   <target name="clean">
-    <delete dir="${integrale-tests.basedir}/bin" />
-    <delete dir="${integrale-tests.basedir}/gen" />
+    <delete dir="${blackjack-tests.basedir}/bin" />
+    <delete dir="${blackjack-tests.basedir}/gen" />
   </target>
 
 </project>
