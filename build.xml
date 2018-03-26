@@ -24,6 +24,7 @@
       <include name="objenesis-1.0.jar" />
       <include name="hamcrest-library-1.1.jar" />
     </fileset>
+  	<pathelement location="${blackjack.basedir}/bin" />
   </path>
 
   <path id="classpath.run-tests">
