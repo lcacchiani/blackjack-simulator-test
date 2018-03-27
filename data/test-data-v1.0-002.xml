@@ -65,7 +65,7 @@
 				<balance>100</balance>
 			</player>
 			<rules xsi:type="standard-rules">
-				<soft-17>false</soft-17>
+				<soft-17>true</soft-17>
 				<surrender>no-surrender</surrender>
 				<split>same-value</split>
 				<resplit>-1</resplit>

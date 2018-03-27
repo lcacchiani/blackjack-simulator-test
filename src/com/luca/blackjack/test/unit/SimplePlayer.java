@@ -307,4 +307,17 @@ public class SimplePlayer {
 		assertEquals(initialBalance - bet, player.getBalance(), 0.001);
 		assertEquals(bet, actual, 0.001);
 	}
+	
+	@Test
+	public final void notEnoughToBet() {
+		assertEquals(initialBalance, player.getBalance(), 0.001);
+		context.checking(new Expectations() {
+			{
+				oneOf(hand).setStatus(Status.CLOSED);
+			}
+		});
+		double actual = player.bet(rules, 20, 30);
+		assertEquals(initialBalance, player.getBalance(), 0.001);
+		assertEquals(0d, actual, 0.001);
+	}
 }
