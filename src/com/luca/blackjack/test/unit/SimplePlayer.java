@@ -101,11 +101,13 @@ public class SimplePlayer {
 				will(returnValue(handBet));
 				allowing(hand).isSplit();
 				will(returnValue(false));
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.ACTIVE));
 				oneOf(rules).getBlackjackPayoutValue();
 				will(returnValue(payout));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).getCards();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -126,11 +128,13 @@ public class SimplePlayer {
 			{
 				allowing(hand).getBet();
 				will(returnValue(handBet));
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.CLOSED));
 				oneOf(rules).getWinPayoutValue();
 				will(returnValue(payout));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).isSplit();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -151,11 +155,13 @@ public class SimplePlayer {
 			{
 				allowing(hand).getBet();
 				will(returnValue(handBet));
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.CLOSED));
 				oneOf(rules).getWinPayoutValue();
 				will(returnValue(payout));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).isSplit();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -175,9 +181,11 @@ public class SimplePlayer {
 			{
 				oneOf(hand).getBet();
 				will(returnValue(handBet));
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.CLOSED));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).isSplit();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -194,9 +202,11 @@ public class SimplePlayer {
 	public final void setResultBustedOut() {
 		context.checking(new Expectations() {
 			{
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.CLOSED));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).isSplit();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -212,9 +222,11 @@ public class SimplePlayer {
 	public final void setResultDealerBlackJack() {
 		context.checking(new Expectations() {
 			{
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.ACTIVE));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).getCards();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -230,9 +242,11 @@ public class SimplePlayer {
 	public final void setResultLowerScore() {
 		context.checking(new Expectations() {
 			{
-				oneOf(hand).getStatus();
+				allowing(hand).getStatus();
 				will(returnValue(Status.CLOSED));
 				oneOf(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).isSplit();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(initialBalance, player.getBalance(), 0.001);
@@ -251,6 +265,8 @@ public class SimplePlayer {
 				allowing(hand).getStatus();
 				will(returnValue(Status.CLOSED));
 				allowing(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).isSplit();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(null, player.getTopResult());
@@ -266,6 +282,8 @@ public class SimplePlayer {
 				allowing(hand).getStatus();
 				will(returnValue(Status.ACTIVE));
 				allowing(hand).setStatus(Status.EVALUATED);
+				oneOf(hand).getCards();
+				oneOf(hand).getSumCardValue();
 			}
 		});
 		assertEquals(null, player.getTopResult());
