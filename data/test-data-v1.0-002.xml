@@ -8,7 +8,7 @@
 			<min-bet>10</min-bet>
 			<max-bet>1000</max-bet>
 			<deck xsi:type="standard-deck">
-				<seed>0004</seed>
+				<seed>1234</seed>
 				<deck-no>1</deck-no>
 			</deck>
 			<dealer xsi:type="simple-dealer">
@@ -78,7 +78,7 @@
 				<no-hole-card>false</no-hole-card>
 				<obo>false</obo>
 				<blackjack-payout>3:2</blackjack-payout>
-				<dealer-win-ties>true</dealer-win-ties>
+				<dealer-win-ties>false</dealer-win-ties>
 				<win-payout>1:1</win-payout>
 			</rules>
 		</table>

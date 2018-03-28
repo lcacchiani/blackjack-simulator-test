@@ -11,7 +11,9 @@ import org.junit.runners.Suite;
 		PlayerHand.class, //
 		StandardReport.class, //
 		VegasTable.class, //
-		VegasTableStandardRules.class })
+		VegasTableStandardRules.class,
+		VegasTableDealerWinTies.class,
+		VegasTableSoft17.class }) //
 public class AllIntegrationTests {
 
 }

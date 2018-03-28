@@ -8,7 +8,7 @@
 			<min-bet>10</min-bet>
 			<max-bet>1000</max-bet>
 			<deck xsi:type="standard-deck">
-				<seed>0004</seed>
+				<seed>1234</seed>
 				<deck-no>1</deck-no>
 			</deck>
 			<dealer xsi:type="simple-dealer">
