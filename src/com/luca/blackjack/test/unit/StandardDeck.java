@@ -1,11 +1,11 @@
 package com.luca.blackjack.test.unit;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
-
-import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -103,13 +103,9 @@ public class StandardDeck {
 		List<Object> result9 = new ArrayList<Object>();
 		result9.addAll(Arrays.asList(728));
 
-		return Arrays
-				.asList(new Object[][] { { input0, result0 },
-						{ input1, result1 }, { input2, result2 },
-						{ input3, result3 }, { input4, result4 },
-						{ input5, result5 }, { input6, result6 },
-						{ input7, result7 }, { input8, result8 },
-						{ input9, result9 } });
+		return Arrays.asList(new Object[][] { { input0, result0 }, { input1, result1 }, { input2, result2 },
+				{ input3, result3 }, { input4, result4 }, { input5, result5 }, { input6, result6 }, { input7, result7 },
+				{ input8, result8 }, { input9, result9 } });
 	}
 
 	@Test(expected = IllegalStateException.class)
@@ -225,8 +221,7 @@ public class StandardDeck {
 		boolean differentCard = false;
 		try {
 			for (int i = 0; !differentCard; i++)
-				differentCard = current.get(i) == regenerated.get(i) ? true
-						: false;
+				differentCard = current.get(i) == regenerated.get(i) ? true : false;
 		} catch (Exception e) {
 		}
 		assertTrue(differentCard);
@@ -253,5 +248,17 @@ public class StandardDeck {
 		int expected = deckNo;
 		int actual = deck.getDeckNo();
 		assertEquals(expected, actual);
+	}
+
+	@Test(timeout = 1000)
+	public final void differentSeedGeneration() {
+		long t = System.currentTimeMillis();
+		long end = t + 100;
+		int seed = deck.getSeed();
+		while (System.currentTimeMillis() < end) {
+			deck.regenerate();
+			assertThat(seed, not(equalTo(deck.getSeed())));
+			seed = deck.getSeed();
+		}
 	}
 }

@@ -101,20 +101,20 @@ public class VegasTable {
 		
 		List<Object> run05 = new ArrayList<Object>();
 		List<Object> player05a = new ArrayList<Object>();
-		player05a.addAll(Arrays.asList(130d, Result.WON_DEALER_BUSTED_OUT));
+		player05a.addAll(Arrays.asList(110d, Result.LOST_BUSTED_OUT));
 		List<Object> player05b = new ArrayList<Object>();
-		player05b.addAll(Arrays.asList(110d, Result.WON_DEALER_BUSTED_OUT));
+		player05b.addAll(Arrays.asList(150d, Result.WON_HIGHER_SCORE));
 		List<Object> player05c = new ArrayList<Object>();
-		player05c.addAll(Arrays.asList(110d, Result.LOST_BUSTED_OUT));
+		player05c.addAll(Arrays.asList(100d, Result.PUSH));
 		List<Object> player05d = new ArrayList<Object>();
-		player05d.addAll(Arrays.asList(95d, Result.LOST_BUSTED_OUT));
+		player05d.addAll(Arrays.asList(90d, Result.LOST_BUSTED_OUT));
 		List<Object> player05e = new ArrayList<Object>();
-		player05e.addAll(Arrays.asList(115d, Result.WON_DEALER_BUSTED_OUT));
+		player05e.addAll(Arrays.asList(95d, Result.LOST_LOWER_SCORE));
 		List<Object> player05f = new ArrayList<Object>();
-		player05f.addAll(Arrays.asList(90d, Result.WON_DEALER_BUSTED_OUT));
+		player05f.addAll(Arrays.asList(95d, Result.WON_HIGHER_SCORE));
 		List<Object> player05g = new ArrayList<Object>();
-		player05g.addAll(Arrays.asList(110d, Result.WON_DEALER_BUSTED_OUT));
-		run05.addAll(Arrays.asList(Card.FOUR_OF_HEARTS, 24, 7, player05a,
+		player05g.addAll(Arrays.asList(110d, Result.WON_HIGHER_SCORE));
+		run05.addAll(Arrays.asList(Card.KING_OF_SPADES, 18, 7, player05a,
 				player05b, player05c, player05d, player05e, player05f,
 				player05g));
 		
