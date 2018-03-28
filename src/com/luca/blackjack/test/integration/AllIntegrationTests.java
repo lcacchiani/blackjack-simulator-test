@@ -10,7 +10,8 @@ import org.junit.runners.Suite;
 		Importer.class, //
 		PlayerHand.class, //
 		StandardReport.class, //
-		VegasTable.class })
+		VegasTable.class, //
+		VegasTableStandardRules.class })
 public class AllIntegrationTests {
 
 }
